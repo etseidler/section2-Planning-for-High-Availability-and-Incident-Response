@@ -1,0 +1,33 @@
+AMI IDs from installation step:
+
+# original, in us-east-1
+[cloudshell-user@ip-10-138-165-109 ~]$ aws ec2 create-restore-image-task --object-key ami-0ec6fdfb365e5fc00.bin --bucket udacity-srend --name "udacity-seidler"
+{
+    "ImageId": "ami-04cba4f37077b5859"
+}
+# copied to us-east-2
+[cloudshell-user@ip-10-138-165-109 ~]$ aws ec2 copy-image --source-image-id ami-04cba4f37077b5859 --source-region us-east-1 --region us-east-2 --name "udacity-seidler"
+{
+    "ImageId": "ami-079c1d9ce4279da0e"
+}
+
+# copied to us-west-1
+[cloudshell-user@ip-10-138-165-109 ~]$ aws ec2 copy-image --source-image-id ami-04cba4f37077b5859 --source-region us-east-1 --region us-west-1 --name "udacity-seidler"
+{
+    "ImageId": "ami-0c54ebd2d4284ad2f"
+}
+
+
+don't forget to create an IAM user and configure the cloudshell to use that user
+
+
+High-level steps
+- optional: aws sts get-caller-identity to confirm creds are still in good shape
+- terraform apply
+- update the kubectl config via `aws eks...` if needed and run terraform apply again
+
+
+got it deployed. wasn't able to install prom/grafana due to failed helm deploy.
+- will need to update values.yaml
+- check previous project for details about this
+- this will need some troubleshooting
