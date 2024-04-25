@@ -34,12 +34,6 @@ resource "aws_rds_cluster" "udacity_cluster-s" {
   skip_final_snapshot      = true
   storage_encrypted        = false
   depends_on = [aws_rds_cluster_parameter_group.cluster_pg-s]
-
-  lifecycle {
-    ignore_changes = [
-      engine_version,
-    ]
-  }
 }
 
 resource "aws_rds_cluster_instance" "udacity_instance-s" {
