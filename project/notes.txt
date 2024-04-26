@@ -25,9 +25,20 @@ High-level steps
 - optional: aws sts get-caller-identity to confirm creds are still in good shape
 - terraform apply
 - update the kubectl config via `aws eks...` if needed and run terraform apply again
-
+    - before doing that, run a plan to make sure cluster won't be recreated. Add AZ *-2c per the tf plan output
 
 got it deployed. wasn't able to install prom/grafana due to failed helm deploy.
 - will need to update values.yaml
 - check previous project for details about this
-- this will need some troubleshooting
+    - https://knowledge.udacity.com/questions/788661 for how to get helm properly installed. this worked for project 1
+- alternate prometheus installation worked
+- grafana login needs to be the load balancer DNS prefixed with http:// since port 443 isn't open
+- lastly, make sure to include both email and username and public IP when doing the postman registration
+    - without all three bits, the user registration won't work, it'll server error
+
+
+
+confusing as hell:
+- need to remove an AZ 2c to create all the resource on initial tf init
+- but there's a step where you have to run tf apply for a second time, and at that point it says having that AZ missing causes the whole cluster to be recreated?
+  this blows.
