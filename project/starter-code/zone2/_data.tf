@@ -27,15 +27,6 @@ data "terraform_remote_state" "vpc" {
 
 }
 
-data "terraform_remote_state" "vpc_west" {
-  backend = "s3"
-  config = {
-    bucket = "udacity-tf-seidler"
-      key    = "terraform/terraform.tfstate"
-      region = "us-east-2"
-    }
-}
-
 data "aws_iam_policy" "instance-policy" {
   name = "app-udacity-instance-policy"
 }
