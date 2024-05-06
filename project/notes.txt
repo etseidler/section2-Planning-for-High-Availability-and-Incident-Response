@@ -17,6 +17,22 @@ AMI IDs from installation step:
     "ImageId": "ami-0c54ebd2d4284ad2f"
 }
 
+## redoing installation step since i may have exceeded by course budget
+***
+# original, in us-east-1
+{
+    "ImageId": "ami-0295f789ba07f4137"
+}
+copying to us-east-2
+{
+    "ImageId": "ami-00ae03071284beb10"
+}
+copying to us-west-2
+{
+    "ImageId": "ami-090b141d9ec654ace"
+}
+
+
 
 don't forget to create an IAM user and configure the cloudshell to use that user
 
